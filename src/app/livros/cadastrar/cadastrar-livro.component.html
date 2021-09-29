@@ -1,0 +1,90 @@
+<main class="container">
+    <form action="" method="" class="form mt-5 mb-5" #formLivro="ngForm">
+        <fieldset>
+            <legend class="text-center display-4">Cadastro de Livro</legend>
+
+            <small id="asterisco" class="form-text text-muted mb-4">Os campos marcados com asterisco * são de preenchimento obrigatório.</small>
+
+            <div class="row mt-5">
+                <div class="form-group col-9">
+                    <div class="input-group">                           
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">* Título Livro</div>
+                        </div>
+                        <!-- public titulo?: string, -->
+                        <input type="text" class="form-control" name="titulo" id="titulo" placeholder="Título do Livro" [(ngModel)]= "livro.titulo" #titulo="ngModel">
+                    </div>  
+                </div>   
+                <div class="form-group col-3">
+                    <div class="input-group">                           
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">* N° Páginas</div>
+                        </div>
+                        <!-- public paginas?: number -->
+                        <input type="number" class="form-control " name="numeroPaginas" id="numeroPaginas" placeholder="N° de Páginas" [(ngModel)]= "livro.paginas" #paginas="ngModel">
+                    </div>  
+                </div>                
+            </div>
+
+            <div class="row mt-5">
+                <div class="form-group col-9">
+                    <div class="input-group">                           
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">* Nome Autor</div>
+                        </div>
+                        <!-- public autor?: string, -->
+                        <input type="text" class="form-control " name="autor" id="autor" placeholder="Nome do Autor" [(ngModel)]= "livro.autor" #autor="ngModel">
+                    </div>  
+                </div>
+                <div class="form-group col-3">
+                    <div class="input-group">                           
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">* ISBN</div>
+                        </div>
+                        <!-- public isbn?: string, -->
+                        <input type="number" class="form-control " name="isbn" id="isbn" placeholder="ISBN-13 ou ISBN-10" title="preferencialmente ISBN-13, caso tenha" [(ngModel)]= "livro.isbn" #isbn="ngModel">
+                    </div>  
+                </div>
+            </div>
+
+            <div class="row mt-5">
+                <div class="form-group col-6">
+                    <div class="input-group">                           
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">* Edição</div>
+                        </div>
+                        <!-- public edicao?: string, -->
+                        <input type="text" class="form-control" name="edicao" id="edicao" placeholder="Edição">
+                    </div>  
+                </div>
+                <div class="form-group col-6">
+                    <div class="input-group">                           
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">* Editora</div>
+                        </div>
+                        <!-- public editora?: string, -->
+                        <input type="text" class="form-control " name="editora" id="editora" placeholder="Editora" [(ngModel)]= "livro.editora" #editora="ngModel">
+                    </div>  
+                </div>
+                
+            </div>
+
+            <div class="row mt-5">
+                <div class="col-6 d-flex justify-content-start">
+                    <button class="btn btn-primary text-uppercase pr-5 pl-5" type="submit" (click)="cadastrarLivro()"  value="Cadastrar" [disabled]="!formLivro.form.valid">Enviar</button>
+                </div>
+                
+                <div class="col-6 d-flex justify-content-end">
+                    <button class="btn btn-dark text-uppercase pr-5 pl-5" type="submit" [routerLink]="['/livros']">Ver Acervo</button>
+                </div> 
+            </div>
+            
+        </fieldset>
+    </form>
+</main>
+
+<!-- <div class="alert alert-danger text-center" *ngIf="title.errors && (title.dirty || title.touched)">
+    <div [hidden]="!title.errors.required">
+        Inform the book title!
+    </div>
+</div> -->

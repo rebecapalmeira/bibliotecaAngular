@@ -1,0 +1,59 @@
+<h1 class="text-center mb-5">Livros Cadastrados</h1>
+
+<div class="container">
+    <table class="table table-striped table-bordered table-hover text-center">
+        <thead>
+            <tr class="text-center">
+                <th class="text-center">ID do livro</th>
+                <th class="text-center">Livro</th>
+                <th class="text-center">Autor</th>
+                <th class="text-center">Editora</th>
+                <th class="text-center">Páginas</th>
+                <th class="text-center" colspan="2" class="text-center">
+                    <a class="btn btn-xs btn-success" [routerLink]="['/livros/cadastrar']">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Novo
+                    </a>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+    <!-- a partir daqui, são as linhas da tabelas que exibem os livros, através da diretiva *ngFor, que é como um forEach, um laço de repetição que mostra cada livro -->
+            <tr *ngFor="let livro of livros">
+                <td >
+                    <!-- exibe na tela o título do livro -->
+                    {{ livro.id }}
+                </td>
+                <td >
+                    <!-- exibe na tela o título do livro -->
+                    {{ livro.titulo }}
+                </td>
+                <td >
+                    <!-- exibe na tela o autor do livro -->
+                    {{ livro.autor }}
+                </td>
+                <td >
+                    <!-- exibe na tela a editora do livro -->
+                    {{ livro.editora }}
+                </td>
+                <td >   
+                    <!-- exibe na tela o número de páginas livro -->
+                    {{ livro.paginas }}
+                </td>
+
+                <td class="text-center" style="width: 200px">
+                    <a title="Editar" alt="Editar" class="btn btn-xs btn-info mr-5">
+                        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Editar
+                    </a>
+                    <a href="#" title="Remover" alt="Remover" class="btn btn-xs btn-danger">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Remover
+                    </a>
+                </td>
+            </tr>
+        </tbody>   
+    </table>
+</div>
+
+
+
+
+<p *ngIf="livros.length == 0">Nenhum livro cadastrado.</p>
