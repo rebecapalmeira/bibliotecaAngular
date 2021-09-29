@@ -5,11 +5,16 @@ import { ListarLivroComponent } from './listar/listar-livro.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CadastrarLivroComponent } from './cadastrar';
+import { ExcluirLivroComponent } from './excluir';
+import { EditarLivroComponent } from './editar';
 
 
 @NgModule({
   declarations: [ 
-    ListarLivroComponent, CadastrarLivroComponent
+    ListarLivroComponent, 
+    CadastrarLivroComponent,
+    ExcluirLivroComponent,
+    EditarLivroComponent
   ],
 
   imports: [

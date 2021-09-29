@@ -5,6 +5,12 @@
 
             <small id="asterisco" class="form-text text-muted mb-4">Os campos marcados com asterisco * são de preenchimento obrigatório.</small>
 
+            <!-- <div class="alert alert-danger text-center" *ngIf="title.errors && (title.dirty || title.touched)">
+                <div [hidden]="!title.errors.required">
+                    Inform the book title!
+                </div>
+            </div> -->
+
             <div class="row mt-5">
                 <div class="form-group col-9">
                     <div class="input-group">                           
@@ -12,8 +18,13 @@
                             <div class="input-group-text">* Título Livro</div>
                         </div>
                         <!-- public titulo?: string, -->
-                        <input type="text" class="form-control" name="titulo" id="titulo" placeholder="Título do Livro" [(ngModel)]= "livro.titulo" #titulo="ngModel">
+                        <input type="text" class="form-control" name="titulo" id="titulo" placeholder="Título do Livro" [(ngModel)]= "livro.titulo" #titulo="ngModel" required>
                     </div>  
+                    <div class="alert alert-warning text-center" *ngIf="titulo.errors && (titulo.dirty || titulo.touched)">
+                        <div [hidden]="!titulo.errors.required">
+                            Digite o título do livro.
+                        </div>
+                    </div>
                 </div>   
                 <div class="form-group col-3">
                     <div class="input-group">                           
@@ -21,7 +32,12 @@
                             <div class="input-group-text">* N° Páginas</div>
                         </div>
                         <!-- public paginas?: number -->
-                        <input type="number" class="form-control " name="numeroPaginas" id="numeroPaginas" placeholder="N° de Páginas" [(ngModel)]= "livro.paginas" #paginas="ngModel">
+                        <input type="number" class="form-control " name="paginas" id="paginas" minlength="1" placeholder="N° de Páginas" [(ngModel)]= "livro.paginas" #paginas="ngModel" required>
+                    </div> 
+                    <div class="alert alert-warning text-center" *ngIf="isbn.errors && (isbn.dirty || isbn.touched)">
+                        <div [hidden]="!isbn.errors.required">
+                            Informe o número de páginas do livro.
+                        </div>
                     </div>  
                 </div>                
             </div>
@@ -33,17 +49,30 @@
                             <div class="input-group-text">* Nome Autor</div>
                         </div>
                         <!-- public autor?: string, -->
-                        <input type="text" class="form-control " name="autor" id="autor" placeholder="Nome do Autor" [(ngModel)]= "livro.autor" #autor="ngModel">
-                    </div>  
+                        <input type="text" class="form-control " name="autor" id="autor" placeholder="Nome do Autor" [(ngModel)]= "livro.autor" #autor="ngModel" required>
+                    </div>
+                    <div class="alert alert-warning text-center" *ngIf="autor.errors && (autor.dirty || autor.touched)">
+                        <div [hidden]="!autor.errors.required">
+                            Digite o nome do autor.
+                        </div>
+                    </div>
                 </div>
                 <div class="form-group col-3">
-                    <div class="input-group">                           
+                    <div class="input-group"> 
                         <div class="input-group-prepend">
                             <div class="input-group-text">* ISBN</div>
                         </div>
                         <!-- public isbn?: string, -->
-                        <input type="number" class="form-control " name="isbn" id="isbn" placeholder="ISBN-13 ou ISBN-10" title="preferencialmente ISBN-13, caso tenha" [(ngModel)]= "livro.isbn" #isbn="ngModel">
-                    </div>  
+                        <input type="text" class="form-control " name="isbn" id="isbn" placeholder="Ex: 978-8595081512" title="preferencialmente ISBN-13, caso tenha" [(ngModel)]= "livro.isbn" #isbn="ngModel" required minlength="10" maxlength="14">                          
+                    </div> 
+                    <div class="alert alert-warning text-center" *ngIf="isbn.errors && (isbn.dirty || isbn.touched)">
+                        <div [hidden]="!isbn.errors.required">
+                            Informe o código ISBN do livro.
+                        </div>
+                        <div [hidden]="!isbn.errors.minlength">
+                            O ISBN deve conter no mínimo 10 caracteres numéricos.
+                        </div>
+                    </div> 
                 </div>
             </div>
 
@@ -54,7 +83,7 @@
                             <div class="input-group-text">* Edição</div>
                         </div>
                         <!-- public edicao?: string, -->
-                        <input type="text" class="form-control" name="edicao" id="edicao" placeholder="Edição">
+                        <input type="text" class="form-control" name="edicao" id="edicao" placeholder="Edição" [(ngModel)]= "livro.edicao" #edicao="ngModel">
                     </div>  
                 </div>
                 <div class="form-group col-6">
@@ -63,7 +92,12 @@
                             <div class="input-group-text">* Editora</div>
                         </div>
                         <!-- public editora?: string, -->
-                        <input type="text" class="form-control " name="editora" id="editora" placeholder="Editora" [(ngModel)]= "livro.editora" #editora="ngModel">
+                        <input type="text" class="form-control " name="editora" id="editora" placeholder="Editora" [(ngModel)]= "livro.editora" #editora="ngModel" required>
+                    </div>
+                    <div class="alert alert-warning text-center" *ngIf="editora.errors && (editora.dirty || editora.touched)">
+                        <div [hidden]="!editora.errors.required">
+                            Informe o nome da editora.
+                        </div>
                     </div>  
                 </div>
                 
